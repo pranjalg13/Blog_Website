@@ -1,0 +1,51 @@
+
+{% extends "accounts/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+<!-- Page Header -->
+<header class="masthead" style="background-image: url('/static/img/about-bg.jpg')">
+  <div class="overlay"></div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <div class="page-heading">
+          <h2>Your Profile</h2>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+<div class="container">
+  {% if messages %}
+  {% for message in messages %}
+  <div class="alert alert-{{message.tags}}">
+    {{message}}
+  </div>
+  {% endfor %}
+  {% endif %}
+</div>
+<div class="container">
+  <div class="content-section">
+    <div class="media">
+      <img class="rounded-circle " src="{{ user.profile.profile_pic.url }}">
+      <div class="media-body">
+        <h2 class="account-heading">Username: {{ user.username }}</h2>
+        <p class="text-secondary">Email: {{ user.email }}</p>
+      </div>
+    </div>
+    <hr>
+    <h3>Profile Info</h3>
+    <form class="" action="" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{u_form|crispy }}
+
+        {{p_form|crispy }}
+        <hr>
+        <input class="btn btn-info " type="submit" name="" value="Update">
+        <hr>
+    </form>
+  </div>
+
+</div>
+{% endblock content %}

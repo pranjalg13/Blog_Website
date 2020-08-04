@@ -1,0 +1,31 @@
+{% extends "accounts/base.html" %}
+{% load crispy_forms_tags %}
+{% block  content %}
+
+<!-- Page Header -->
+<header class="masthead" style="background-image: url('/static/img/contact-bg.jpg')">
+  <div class="overlay"></div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-9 col-md-1 mx-auto">
+        <div class="page-heading">
+          <h1>Register here</h1>
+          <span class="subheading">Just few steps before you can post </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+<div class="container">
+  <form class="" action="" method="post">
+      {% csrf_token %}
+      {{ form|crispy }}
+      <input class="btn btn-info " type="submit" name="" value="Submit">
+      <hr>
+      <small class='text-muted'>
+          Already Have a Account? <a href="{% url 'login' %}">Login</a>
+      </small>
+  </form>
+</div>
+
+{% endblock %}

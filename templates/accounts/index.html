@@ -1,0 +1,71 @@
+{% extends "accounts/base.html" %}
+
+{% block content %}
+
+<!-- Page Header -->
+<header class="masthead" style="background-image: url('/static/img/home-bg.jpg')">
+  <div class="overlay"></div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <div class="site-heading">
+          <h1>Clean Blog</h1>
+          <span class="subheading">A website for your blogs</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- Main Content -->
+{% for form in forms %}
+<div class="container">
+
+  <div class="row">
+    <div class="col-lg-8 col-md-10 mx-auto">
+      <div class="post-preview">
+        <a href="{% url 'detail' form.id %}">
+          <h2 class="post-title">
+            {{form.title}}
+          </h2>
+          <h4 class="post-subtitle">
+            {{form.description}}
+          </h4>
+        </a>
+        <p class="post-meta">Posted by
+          <a href="{% url 'profile' %}">{{form.author}}</a>
+          on {{form.date_created|date:"F d,Y"}}</p>
+        <hr>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+{% endfor %}
+<!-- Pager -->
+
+<div class="w3-show-inline-block">
+  <div class="w3-bar">
+    <div class="clearfix">
+      {% if is_paginated %}
+
+      {% if page_obj.has_previous %}
+      <a class="btn btn-primary float-left" href="?page={{ page_obj.previous_page_number }}">&larr; Newer Posts </a>
+      {% else %}
+      {# <a class="btn btn-primary float-left" href="">&larr; New Posts </a> #}
+      {% endif %}
+
+      {% if page_obj.has_next %}
+      <a class="btn btn-primary float-right" href="?page={{  page_obj.next_page_number }}"> Old Posts &rarr;</a>
+
+      {% else %}
+      {# <a class="btn btn-primary float-right" href="?page={{ page_obj.previous_page_number }}"> Old Posts &rarr;</a> #}
+
+      {% endif %}
+      {% endif %}
+
+    </div>
+  </div>
+</div>
+{% endblock %}

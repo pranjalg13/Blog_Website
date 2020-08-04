@@ -1,0 +1,26 @@
+
+{% extends "accounts/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+<!-- Page Header -->
+<header class="masthead" style="background-image: url('/static/img/about-bg.jpg')">
+  <div class="overlay"></div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <div class="page-heading">
+          <h2>Start Your BLog</h2>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+<div class="container">
+  <form class="" action="" method="post">
+      {% csrf_token %}
+      {{ form|crispy }}
+      <input class="btn btn-info " type="submit" name="" value="Submit">
+      <hr>
+  </form>
+{% endblock %}

@@ -1,0 +1,74 @@
+{% extends "accounts/base.html" %}
+{# {% load crispy_forms_tags %} #}
+{% block  content %}
+
+<!-- Page Header -->
+<header class="masthead">
+  <div class="overlay"></div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-9 col-md-1 mx-auto">
+        <div class="page-heading">
+          <h1>Login</h1>
+          <span class="subheading">Last Step </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+<div class="container">
+  {% if messages %}
+  {% for message in messages %}
+  <div class="alert alert-{{message.tags}}">
+    {{message}}
+  </div>
+  {% endfor %}
+  {% endif %}
+</div>
+
+<div class="container">
+  <form action="" method="POST">
+
+    {% csrf_token %}
+    <div class="form-group row">
+      <label for="inputEmail3" class="col-sm-3 col-form-label">Username: </label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" name="username" id="inputEmail3" placeholder="Username">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="inputPassword3" class="col-sm-3 col-form-label">Password: </label>
+      <div class="col-sm-10">
+        <input type="password" name="password" class="form-control" id="inputPassword3" placeholder="Password">
+      </div>
+    </div>
+    <div class="form-group row">
+      <div class="col-sm-3"></div>
+      <div class="col-sm-10">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" id="gridCheck1">
+          <label class="form-check-label" for="gridCheck1">
+            Remember me
+          </label>
+        </div>
+      </div>
+    </div>
+    <div class="form-group row">
+      <div class="col-sm-10">
+        <button type="submit" class="btn btn-primary">Sign in</button>
+      </div>
+      <hr>
+      <hr>
+
+    </div>
+
+</div>
+</form>
+<div class="container ">
+  <small class='text-muted'>
+    Don't Have a Account? <a href="{% url 'register' %}">Register Here</a>
+  </small>
+</div>
+
+</div>
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends "accounts/base.html" %}
+{% block  content %}
+
+<!-- Page Header -->
+<header class="masthead" style="background-image: url('/static/img/contact-bg.jpg')">
+  <div class="overlay"></div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-9 col-md-1 mx-auto">
+        <div class="page-heading">
+          <h2>You have sucessfully logout</h2>
+          <span class="subheading">Thank You for visiting the website</span>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</header>
+<div class="container">
+    <h3>
+    <a href="{% url 'login' %}"><center>LOG IN AGAIN</center></a>
+  </h3>
+    <p><center>OR</center></p>
+  <h3>
+  <a href="{% url 'home' %}"><center>GO TO HOME</center></a>
+</h3>
+</div>
+{% endblock %}
